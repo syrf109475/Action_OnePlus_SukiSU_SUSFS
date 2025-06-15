@@ -126,6 +126,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt autoremove --purge firefox -y
           sudo apt update && sudo apt upgrade -y
           sudo apt install -y python3 git curl
 
