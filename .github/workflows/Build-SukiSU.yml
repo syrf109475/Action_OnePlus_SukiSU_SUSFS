@@ -378,6 +378,7 @@ jobs:
             if [ "$(realpath "$image_path")" != "$(realpath "$dir1"Image)" ]; then
               cp "$image_path" "$dir1"
             else
+              cp "$image_path" "$dir1"
               echo "源文件与目标相同，跳过复制"
             fi
             cp "$dir1"Image ./AnyKernel3/Image
