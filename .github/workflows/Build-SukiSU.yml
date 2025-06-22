@@ -381,6 +381,8 @@ jobs:
               echo "源文件与目标相同，跳过复制"
             fi
             cp "$dir1"Image ./AnyKernel3/Image
+            mkdir -p "$dir1/../imgtmp"
+            cp "$dir1"Image "$dir1/../imgtmp"
           else
             echo "未找到 Image 文件，构建可能失败"
             exit 1
@@ -411,8 +413,8 @@ jobs:
 
           curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU_patch/refs/heads/main/kpm/patch_linux" -o patch_linux
           chmod +x patch_linux
+          mv -f ../imgtmp/Image ./
           ./patch_linux
-          ls -a
           # rm -f Image
           # mv oImage Image
           cp ./oImage $GITHUB_WORKSPACE/AnyKernel3/Image
