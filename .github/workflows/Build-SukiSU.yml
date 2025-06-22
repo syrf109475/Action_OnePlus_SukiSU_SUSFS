@@ -380,9 +380,10 @@ jobs:
             else
               echo "源文件与目标相同，跳过复制"
             fi
+            imgtmp="kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/imgtmp/"
+            mkdir -p "kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/imgtmp/"
             cp "$dir1"Image ./AnyKernel3/Image
-            mkdir -p "$dir1/../imgtmp"
-            cp "$dir1"Image "$dir1/../imgtmp"
+            cp "$dir1"Image $imgtmp
           else
             echo "未找到 Image 文件，构建可能失败"
             exit 1
@@ -414,6 +415,7 @@ jobs:
           curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU_patch/refs/heads/main/kpm/patch_linux" -o patch_linux
           chmod +x patch_linux
           mv -f ../imgtmp/Image ./
+          ls -a
           ./patch_linux
           # rm -f Image
           # mv oImage Image
