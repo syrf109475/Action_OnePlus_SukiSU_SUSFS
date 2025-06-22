@@ -411,13 +411,11 @@ jobs:
 
           curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU_patch/refs/heads/main/kpm/patch_linux" -o patch_linux
           chmod +x patch_linux
-          ls -a
           ./patch_linux
           ls -a
-          rm -f Image
-          ls -a
-          mv oImage Image
-          cp Image $GITHUB_WORKSPACE/AnyKernel3/Image
+          # rm -f Image
+          # mv oImage Image
+          cp ./oImage $GITHUB_WORKSPACE/AnyKernel3/Image
 
       # 下载 SUSFS 模块（CI）
       - name: Download Latest SUSFS Module from CI
