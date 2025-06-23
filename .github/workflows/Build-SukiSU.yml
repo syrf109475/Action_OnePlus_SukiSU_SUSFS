@@ -380,10 +380,12 @@ jobs:
             else
               echo "源文件与目标相同，跳过复制"
             fi
+            ls -l "$dir1" | grep Image
             imgtmp="kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/imgtmp/"
             mkdir -p "$imgtmp"
             cp "$dir1"Image ./AnyKernel3/Image
             cp "$dir1"Image "$imgtmp"
+            ls -l "$imgtmp" | grep Image
           else
             echo "未找到 Image 文件，构建可能失败"
             exit 1
