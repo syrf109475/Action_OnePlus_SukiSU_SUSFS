@@ -414,7 +414,9 @@ jobs:
 
           curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU_patch/refs/heads/main/kpm/patch_linux" -o patch_linux
           chmod +x patch_linux
-          mv -f "$imgtmp"Image ./
+          cd ..
+          mv -f ./imgtmp/Image ./dist/
+          cd dist
           ls -a
           ./patch_linux
           rm -f Image
